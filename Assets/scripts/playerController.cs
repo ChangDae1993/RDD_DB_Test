@@ -2,32 +2,26 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
+    public float moveSpeed;
+    public Rigidbody rigid;
+
+    public Vector3 move;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        rigid = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetAxisRaw("Horizontal") > 0)
-        {
-            Debug.Log("Right");
-        }
-        else if(Input.GetAxisRaw("Horizontal") < 0)
-        {
-            Debug.Log("Left");
-        }
+        move.x = Input.GetAxisRaw("Horizontal");
+        move.z = Input.GetAxisRaw("Vertical");
+    }
 
-        if (Input.GetAxisRaw("Vertical") > 0)
-        {
-            Debug.Log("Up");
-
-        }
-        if (Input.GetAxisRaw("Vertical") < 0)
-        {
-            Debug.Log("Down");
-        }
+    void FixedUpdate()
+    {
+        rigid.MovePosition(rigid.position + move * moveSpeed * Time.fixedDeltaTime);
     }
 }
