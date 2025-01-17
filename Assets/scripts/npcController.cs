@@ -5,10 +5,13 @@ public class npcController : MonoBehaviour
 {
     public Image questMark;
 
+    public int needLV;
+
+    public playerController playerController;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        playerController = GameObject.FindAnyObjectByType<playerController>();
     }
 
     // Update is called once per frame
@@ -21,8 +24,15 @@ public class npcController : MonoBehaviour
     {
         if(other.gameObject.name.Equals("player"))
         {
-            questMark.enabled = true;
-            Debug.Log("Quest On");
+            if (playerController.Lv >= needLV)
+            {
+                questMark.enabled = true;
+                Debug.Log("Quest On");
+            }
+            else
+            {
+                Debug.Log("일반 대화");
+            }
         }
     }
 
