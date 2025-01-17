@@ -11,6 +11,23 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetAxisRaw("Horizontal") > 0)
+        {
+            Debug.Log("Right");
+        }
+        else if(Input.GetAxisRaw("Horizontal") < 0)
+        {
+            Debug.Log("Left");
+        }
+
+        if (Input.GetAxisRaw("Vertical") > 0)
+        {
+            Debug.Log("Up");
+
+        }
+        if (Input.GetAxisRaw("Vertical") < 0)
+        {
+            Debug.Log("Down");
+        }
     }
 }
